@@ -22,7 +22,7 @@ export default function ContentItem({ content }: { content: any }) {
                         <CircularProgress
                         style={{color: 'inherit'}}
                         variant="determinate" 
-                        value={content.accuracy} 
+                        value={parseFloat(content.accuracy)} 
                         />
                     </Stack>
                     <p className="ml-2 -mt-1 self-center">{content.accuracy}%</p>

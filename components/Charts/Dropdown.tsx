@@ -30,23 +30,22 @@ export default function Dropdown({ alignRight, options, handleUpdate, selected, 
                             <Listbox.Options className={classNames(alignRight ? 'right-4' : 'left-4', 'absolute top-12 z-40 mt-1 max-h-80 w-48 overflow-auto rounded-lg bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm')}>
                                 {options.map((option) => (
                                     <Listbox.Option
-                                        onClick={()=>{setSelected(options[option.id])}}
+                                        onClick={()=>{setSelected(options[option.id]); console.log(selected)}}
                                         key={option.id}
                                         className={({ active }) =>
                                             classNames(
-                                                active ? 'bg-gray-100' : 'text-gray-900',
+                                                selected.id === option.id || active ? 'bg-gray-100' : 'text-gray-900',
                                                 'relative cursor-default select-none py-2 pl-8 pr-4'
                                             )
                                         }
                                         value={option}
                                     >
-                                        {({ selected, active }) => (
                                             <>
-                                                <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                                                <span className={classNames(selected.id === option.id ? 'font-semibold' : 'font-normal', 'block truncate')}>
                                                     {option.name}
                                                 </span>
 
-                                                {selected ? (
+                                                {selected.id === option.id ? (
                                                     <span
                                                         className="absolute inset-y-0 right-6 flex text-blue-600 items-center pl-1.5"
                                                     >
@@ -54,7 +53,6 @@ export default function Dropdown({ alignRight, options, handleUpdate, selected, 
                                                     </span>
                                                 ) : null}
                                             </>
-                                        )}
                                     </Listbox.Option>
                                 ))}
                             </Listbox.Options>

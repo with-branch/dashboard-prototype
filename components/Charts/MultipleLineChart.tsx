@@ -1,5 +1,5 @@
 import React from 'react';
-import { VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineMarkSeries, FlexibleXYPlot, GradientDefs } from 'react-vis';
+import { VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, FlexibleXYPlot, GradientDefs } from 'react-vis';
 import Dropdown from './Dropdown';
 import InfoModal from './InfoModal';
 
@@ -30,6 +30,17 @@ export default function MultipleLineChart(
             setSelected: Function
         }
 ) {
+
+    const data: Array<any> = [
+        { x: 0, y: 12 },
+    { x: 1, y: 4 },
+    { x: 2, y: 18 },
+    { x: 3, y: 40 },
+    { x: 4, y: 16 },
+    { x: 5, y: 38 },
+    { x: 6, y: 45 },
+    { x: 7, y: 42 },
+    ];
 
     return (
         <div className="relative flex flex-col min-h-98 m-4 p-4 pl-0 bg-gray-100 rounded-md shadow-xl">
@@ -66,10 +77,8 @@ export default function MultipleLineChart(
                         </GradientDefs>
 
                         {dataArray ? dataArray.map(data =>
-                            <LineMarkSeries animation="gentle" data={data} stroke="#2563EB" fill="#2563EB" style={{ strokeWidth: 4 }} curve={'curveMonotoneX'} />
+                            <LineSeries animation="gentle" data={data} style={{ strokeWidth: 4 }} curve={'curveMonotoneX'} />
                         ) : null}
-
-
                     </FlexibleXYPlot>
                 </div>
             </div>

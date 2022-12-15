@@ -69,28 +69,38 @@ const Home: NextPage = () => {
     { x: 7, y: 42 },
   ]);
 
-  const exapleDataArray =
+  const exampleDataArray =
     [
-      {
-        array1: [{ x: 0, y: 12 },
+      [
+        { x: 0, y: 12 },
         { x: 1, y: 4 },
         { x: 2, y: 18 },
         { x: 3, y: 40 },
         { x: 4, y: 16 },
         { x: 5, y: 38 },
         { x: 6, y: 45 },
-        { x: 7, y: 42 },]
-      },
-      {
-        array2: [{ x: 0, y: 12 },
-        { x: 1, y: 4 },
-        { x: 2, y: 18 },
-        { x: 3, y: 40 },
-        { x: 4, y: 16 },
+        { x: 7, y: 42 },
+      ],
+      [
+        { x: 0, y: 2 },
+        { x: 1, y: 18 },
+        { x: 2, y: 13 },
+        { x: 3, y: 32 },
+        { x: 4, y: 28 },
+        { x: 5, y: 40 },
+        { x: 6, y: 14 },
+        { x: 7, y: 45 },
+      ],
+      [
+        { x: 0, y: 16 },
+        { x: 1, y: 24 },
+        { x: 2, y: 14 },
+        { x: 3, y: 34 },
+        { x: 4, y: 22 },
         { x: 5, y: 38 },
-        { x: 6, y: 45 },
-        { x: 7, y: 42 },]
-      }
+        { x: 6, y: 28 },
+        { x: 7, y: 36 },
+      ]
     ]
 
   const [data5, setData5] = useState([
@@ -135,7 +145,7 @@ const Home: NextPage = () => {
     { id: 6, name: 'Sensitivity' },
   ]
 
-  const [contentArray, setContentArray] = useState([{}])
+  const [contentArray, setContentArray]: [selectedFilter: any, setSelectedFilter: any] = useState([{}])
 
   const contentArray1 = [
     { id: 0, title: 'Photo - 103948', accuracy: '98.8', source: 'blue_mattress_queen.png' },
@@ -174,6 +184,9 @@ const Home: NextPage = () => {
     setSelectedFilter(filters[0])
     setSelectedTopic(topics[0])
     setContentArray(contentArray1)
+    for (let data in exampleDataArray) {
+      console.log(exampleDataArray[data])
+    }
   }, []);
 
   return (
@@ -188,8 +201,8 @@ const Home: NextPage = () => {
       {!loading ? (
         <>
           <Sidebar />
-          <div className="h-screen w-screen pl-16 flex flex-col overflow-scroll">
-            <div className="grid grid-cols-2 gap-1 w-full">
+          <div className="h-screen w-screen pl-12 md:pl-16 flex flex-col overflow-scroll">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 w-full">
               <AccuracyChart
                 data={data}
                 XAxisLabel="Time (days)"
@@ -216,20 +229,19 @@ const Home: NextPage = () => {
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}
               />
-              {/* <MultipleLineChart
-                dataArray={exapleDataArray}
-                XAxisLabel="Predicted"
-                YAxisLabel="Actual"
-                title="Commonly confused categories"
-                description="Sometimes a model can have labels or categories that are very similar and this can cause the model to be less accurate. 
-                  An example of this could be 'World Post' and 'The World Post'. This chart represents which categories are being confused and to what extent."
+              <MultipleLineChart
+                dataArray={exampleDataArray}
+                XAxisLabel="Time (days)"
+                YAxisLabel=""
+                title="Metrics"
+                description="Different types of metrics used to evaluate your ML system over time."
                 hasDropdown={false}
                 dropdownData={[]}
                 setGraph={updateGraph}
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}
-              /> */}
-              <ConfusionMatrixChart
+              />
+              {/* <ConfusionMatrixChart
                 data={data5}
                 XAxisLabel="Predicted"
                 YAxisLabel="Actual"
@@ -241,17 +253,17 @@ const Home: NextPage = () => {
                 setGraph={updateGraph}
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}
-              />
+              /> */}
               <div className="p-4">
-                <div className="flex flex-row justify-between">
-                  <h1 className="ml-8 mb-4 text-2xl font-medium">Content Items</h1>
+                <div className="flex flex-col md:flex-row text-center justify-between">
+                  <h1 className="ml-0 md:ml-8 mb-4 text-2xl font-medium">Content Items</h1>
                   <span className="text-xl text-blue-600">&#x2022; {contentArray.length}</span>
-                  <div className="relative">
+                  <div className="relative mx-auto md:mx-0 mt-4 md:mt-0 mb-10 md:mb-0">
                     <Dropdown alignRight={true} options={topics} handleUpdate={updateContentItems} selected={selectedTopic} setSelected={setSelectedTopic} />
                   </div>
                 </div>
-                <div className="max-h-96 flex flex-col gap-4 rounded-md overflow-y-scroll">
-                  {contentArray ? contentArray.map(content => <ContentItem content={content} />) : null}
+                <div className="md:max-h-96 flex flex-col gap-4 rounded-md overflow-y-scroll">
+                  {contentArray ? contentArray.map((content: { id: React.Key | null | undefined; }) => <ContentItem key={content.id} content={content} />) : null}
                 </div>
               </div>
             </div>
