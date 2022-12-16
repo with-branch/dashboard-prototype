@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AreaSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, FlexibleXYPlot, GradientDefs, HeatmapSeries, LabelSeries } from 'react-vis';
 import Dropdown from './Dropdown';
 import InfoModal from './InfoModal';

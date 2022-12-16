@@ -30,7 +30,7 @@ export default function Dropdown({ alignRight, options, handleUpdate, selected, 
                             <Listbox.Options className={classNames(alignRight ? 'right-4' : 'left-4', 'absolute top-12 z-40 mt-1 max-h-80 w-48 overflow-auto rounded-lg bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm')}>
                                 {options.map((option) => (
                                     <Listbox.Option
-                                        onClick={()=>{setSelected(options[option.id]); console.log(selected)}}
+                                        onClick={()=>{setSelected(options[option.id])}}
                                         key={option.id}
                                         className={({ active }) =>
                                             classNames(

@@ -184,9 +184,6 @@ const Home: NextPage = () => {
     setSelectedFilter(filters[0])
     setSelectedTopic(topics[0])
     setContentArray(contentArray1)
-    for (let data in exampleDataArray) {
-      console.log(exampleDataArray[data])
-    }
   }, []);
 
   return (
@@ -267,7 +264,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <div onClick={() => { updateGraph() }} className="h-10 w-40 ml-4 my-4 pt-2 text-center rounded-md bg-blue-600 text-white border border-blue-600 cursor-pointer hover:bg-transparent hover:text-blue-600">
+            <div onClick={() => { updateGraph() }} className="h-10 w-40 ml-4 my-4 py-2 text-center rounded-md bg-blue-600 text-white border border-blue-600 cursor-pointer hover:bg-transparent hover:text-blue-600">
               Update data
             </div>
           </div>
