@@ -1,13 +1,15 @@
 import React from 'react';
-import { AreaSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, FlexibleXYPlot, GradientDefs, HeatmapSeries, LabelSeries } from 'react-vis';
+import { VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, FlexibleXYPlot, GradientDefs, DiscreteColorLegend } from 'react-vis';
 import Dropdown from './Dropdown';
 import InfoModal from './InfoModal';
 import IssueIndicator from './IssueIndicator';
 
 
-export default function AreaSeriesChart(
+export default function DottedLineComparisonChart(
     {
-        data,
+        lineData,
+        lineData2,
+        legendItems,
         XAxisLabel,
         YAxisLabel,
         title,
@@ -20,7 +22,9 @@ export default function AreaSeriesChart(
         setSelected
     }:
         {
-            data: Array<any>,
+            lineData: Array<any>,
+            lineData2: Array<any>,
+            legendItems: Array<any>,
             XAxisLabel: string,
             YAxisLabel: string,
             title: string,
@@ -33,6 +37,7 @@ export default function AreaSeriesChart(
             setSelected: Function
         }
 ) {
+
 
     return (
         <div className="relative flex flex-col min-h-98 m-4 p-4 pl-0 bg-gray-100 rounded-md shadow-xl">
@@ -61,10 +66,9 @@ export default function AreaSeriesChart(
                         xType="ordinal"
                         yType="linear"
                         colorType="linear"
-                        colorDomain={[0, 5, 10]}
-                        colorRange={["#2563EB", "#29D3E7", "#34D399"]}
                         height={300}
                         className="max-w-5/6 mt-2 mb-2 ml-4 mr-4 rounded-md">
+                        <DiscreteColorLegend className="absolute top-4 left-14 text-black font-extrabold" orientation="vertical" width={300} items={legendItems} />
                         <VerticalGridLines />
                         <HorizontalGridLines />
                         <XAxis top={(255)} style={{ fill: 'black', fontSize: '14px' }} hideLine />
@@ -75,8 +79,9 @@ export default function AreaSeriesChart(
                                 <stop offset="100%" stopColor="lightblue" stopOpacity={0.4} />
                             </linearGradient>
                         </GradientDefs>
-                        <AreaSeries animation="gentle" data={data} fill={'url(#gradient)'} stroke={'none'} opacity={.6} style={{ strokeWidth: 4 }} curve={'curveMonotoneX'} />
-                        <LineSeries animation="gentle" data={data} className="area" stroke="#2563EB" fill="#2563EB" style={{ strokeWidth: 4 }} curve={'curveMonotoneX'} />
+                        
+                        <LineSeries animation="gentle" data={lineData2} strokeStyle="dashed" color={legendItems[0].color} style={{ strokeWidth: 3 }} curve={'curveMonotoneX'} />
+                        <LineSeries animation="gentle" data={lineData} color="#2563EB" style={{ strokeWidth: 4 }} curve={'curveMonotoneX'} />
                     </FlexibleXYPlot>
                 </div>
             </div>

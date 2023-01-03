@@ -2,6 +2,7 @@ import React from 'react';
 import { VerticalGridLines, HorizontalGridLines, XAxis, YAxis, FlexibleXYPlot, GradientDefs, HeatmapSeries, LabelSeries } from 'react-vis';
 import Dropdown from './Dropdown';
 import InfoModal from './InfoModal';
+import IssueIndicator from './IssueIndicator';
 
 
 export default function ConfusionMatrixChart(
@@ -13,6 +14,7 @@ export default function ConfusionMatrixChart(
         description,
         hasDropdown,
         dropdownData,
+        hasIssue,
         setGraph,
         selected,
         setSelected
@@ -25,6 +27,7 @@ export default function ConfusionMatrixChart(
             description: string,
             hasDropdown: boolean,
             dropdownData: Array<any>,
+            hasIssue: boolean,
             setGraph: Function,
             selected: Array<any>,
             setSelected: Function
@@ -37,6 +40,11 @@ export default function ConfusionMatrixChart(
                 <div className="absolute left-0 top-2">
                     <Dropdown alignRight={false} options={dropdownData} handleUpdate={setGraph} selected={selected} setSelected={setSelected} />
                 </div>
+            ) : (null)
+            }
+            
+            {hasIssue ? (
+                <IssueIndicator />
             ) : (null)
             }
 

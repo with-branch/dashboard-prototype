@@ -2,6 +2,7 @@ import React from 'react';
 import { VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries, FlexibleXYPlot, GradientDefs } from 'react-vis';
 import Dropdown from './Dropdown';
 import InfoModal from './InfoModal';
+import IssueIndicator from './IssueIndicator';
 
 
 export default function MultipleLineChart(
@@ -13,6 +14,7 @@ export default function MultipleLineChart(
         description,
         hasDropdown,
         dropdownData,
+        hasIssue,
         setGraph,
         selected,
         setSelected
@@ -25,6 +27,7 @@ export default function MultipleLineChart(
             description: string,
             hasDropdown: boolean,
             dropdownData: Array<any>,
+            hasIssue: boolean,
             setGraph: Function,
             selected: Array<any>,
             setSelected: Function
@@ -40,6 +43,14 @@ export default function MultipleLineChart(
             ) : (null)
             }
 
+            {hasIssue ? (
+                <IssueIndicator />
+            ) : (null)
+            }
+
+            <div className="absolute top-4 left-24 text-xl font-bold">
+                {title}
+            </div>
             <div>
                 <InfoModal title={title} description={description} />
             </div>

@@ -10,7 +10,6 @@ import Dropdown from '../components/Charts/Dropdown';
 import AreaSeriesChart from '../components/Charts/AreaSeriesChart';
 import AccuracyChart from '../components/Charts/AccuracyChart';
 import MultipleLineChart from '../components/Charts/MultipleLineChart';
-import ConfusionMatrixChart from '../components/Charts/ConfusionMatrixChart';
 
 const Home: NextPage = () => {
 
@@ -193,6 +192,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Branch</title>
         <meta name="description" content="With Branch any business can implement ML in less than two sprints and couple of developers." />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
       </Head>
 
       {!loading ? (
@@ -222,6 +224,7 @@ const Home: NextPage = () => {
                 description="The number of feedback items that have been recieved on the given filter over a period of time."
                 hasDropdown={false}
                 dropdownData={[]}
+                hasIssue={false}
                 setGraph={updateGraph}
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}
@@ -234,6 +237,7 @@ const Home: NextPage = () => {
                 description="Different types of metrics used to evaluate your ML system over time."
                 hasDropdown={false}
                 dropdownData={[]}
+                hasIssue={false}
                 setGraph={updateGraph}
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}
@@ -247,6 +251,7 @@ const Home: NextPage = () => {
                   An example of this could be 'World Post' and 'The World Post'. This chart represents which categories are being confused and to what extent."
                 hasDropdown={false}
                 dropdownData={[]}
+                hasIssue={false}
                 setGraph={updateGraph}
                 selected={selectedFilter}
                 setSelected={setSelectedFilter}

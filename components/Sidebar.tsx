@@ -35,9 +35,9 @@ export default function Sidebar() {
     // sidebar links
 
     const navigation = [
-        { name: 'Dashboard', href: '', icon: ImStatsBars, current: true },
-        { name: 'Issues', href: '', icon: MdWarning, current: false },
-        { name: 'Settings', href: '', icon: RiSettings3Line, current: false },
+        { name: 'Dashboard', href: '/', icon: ImStatsBars, current: router.pathname === '/' ? true : false },
+        { name: 'Issues', href: '/issues', icon: MdWarning, current: router.pathname === '/issues' ? true : false },
+        { name: 'Settings', href: '', icon: RiSettings3Line, current: router.pathname === '/settings' ? true : false },
     ]
 
     function classNames(...classes: string[]) {
