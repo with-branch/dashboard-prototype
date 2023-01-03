@@ -62,7 +62,7 @@ export default function Sidebar() {
                                 >
                                     <item.icon
                                         className={classNames(
-                                            item.current ? 'text-blue-600' : item.icon === MdWarning ? 'rounded-md p-1 font-extrabold border-2 border-blue-100 text-blue-100 group-hover:text-primary' : 'text-blue-100 group-hover:text-primary',
+                                            item.current ? 'text-blue-600' : item.icon === MdWarning ? 'rounded-md p-1 font-extrabold border-2 border-blue-100 text-blue-100 group-hover:text-blue-600 group-hover:border-blue-600' : 'text-blue-100 group-hover:text-blue-600',
                                             'mr-4 flex-shrink-0 h-6 w-6 md:h-8 md:w-8'
                                         )}
                                         aria-hidden="true"
