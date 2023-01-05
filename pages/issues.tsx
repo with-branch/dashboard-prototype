@@ -4,11 +4,8 @@ import type { NextPage } from 'next'
 import '../node_modules/react-vis/dist/style.css';
 import Head from 'next/head'
 import Loader from '../components/Loader'
-import Sidebar from '../components/Sidebar';
-import ContentItem from '../components/Charts/ContentItem';
-import Dropdown from '../components/Charts/Dropdown';
+import Sidebar from '../components/Sidebar'
 import AreaSeriesChart from '../components/Charts/AreaSeriesChart';
-import AccuracyChart from '../components/Charts/AccuracyChart';
 import MultipleLineChart from '../components/Charts/MultipleLineChart';
 import ConfusionMatrixChart from '../components/Charts/ConfusionMatrixChart';
 import DottedLineComparisonChart from '../components/Charts/DottedLineComparisonChart';
