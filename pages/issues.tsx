@@ -241,7 +241,7 @@ const Issues: NextPage = () => {
                                         { title: 'Actual', color: '#2563EB' },
                                     ]}
                                     XAxisLabel="Time (days)"
-                                    YAxisLabel=""
+                                    YAxisLabel="Data drift"
                                     title="Data drift / time"
                                     description="The decay of a models' predictive power as a result of the changes in real world environments. 
                                     It is caused due to a variety of reasons including changes in the digital environment and ensuing changes in relationship between variables.
