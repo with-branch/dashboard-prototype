@@ -4,12 +4,12 @@ import InfoModal from './InfoModal';
 
 export default function IssuesChartPlaceholder(
     {
-        issueType,
+        img,
         title,
         description,
     }:
         {
-            issueType: string,
+            img: string,
             title: string,
             description: string,
         }
@@ -21,7 +21,7 @@ export default function IssuesChartPlaceholder(
             <div>
                 <InfoModal title={title} description={description} />
             </div>
-            <img src="" alt="IssueExample" />
+            <img src={img} alt="IssueExample" />
         </div>
     );
 }
